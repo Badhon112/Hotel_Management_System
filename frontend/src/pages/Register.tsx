@@ -30,7 +30,7 @@ const Register = () => {
       await queryClient.invalidateQueries("ValidateToken");
       navigate("/");
     },
-    onError: (error: Error) => {
+    onError: () => {
       showToast({ message: "Authentication failed", type: "ERROR" });
     },
   });
@@ -113,7 +113,9 @@ const Register = () => {
       <span className="flex justify-between items-center">
         <span className="text-sm items-center">
           Already registered?
-          <Link to={"/sign-in"} className="underline">Click here to Login</Link>
+          <Link to={"/sign-in"} className="underline">
+            Click here to Login
+          </Link>
         </span>
         <button
           type="submit"
