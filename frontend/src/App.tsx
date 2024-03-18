@@ -7,8 +7,11 @@ import {
 import Layout from "./layout/Layout";
 import Register from "./pages/Register";
 import SignIn from "./pages/SignIn";
+import AddHotels from "./pages/AddHotels";
+import { useAppContext } from "./contexts/AppContext";
 
 const App = () => {
+  const {isLoggedIn}=useAppContext()
   return (
     <Router>
       <Routes>
@@ -47,6 +50,18 @@ const App = () => {
             </Layout>
           }
         />
+        {isLoggedIn && (
+          <>
+            <Route
+              path="/addhotels"
+              element={
+                <Layout>
+                  <AddHotels />
+                </Layout>
+              }
+            />
+          </>
+        )}
         <Route path="*" element={<Navigate to={"/"} />} />
       </Routes>
     </Router>
