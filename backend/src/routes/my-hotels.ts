@@ -76,7 +76,21 @@ router.get("/", verifyToken, async (req: Request, res: Response) => {
     const hotels = await Hotel.find({ userId: req.userId });
     res.json(hotels);
   } catch (error) {
-    res.status(500).json({message:"Error fetching hotels"})
+    res.status(500).json({ message: "Error fetching hotels" });
+  }
+});
+
+router.get("/:id", verifyToken, async (req: Request, res: Response) => {
+  //Api/my-hotels/
+  try {
+    const id = req.params.id.toString();
+    const hotel = await Hotel.findById({
+      _id: id,
+      userId: req.userId,
+    });
+    res.json(hotel)
+  } catch (error) {
+    res.status(500).json({ message: "Error Fetching hotels" });
   }
 });
 

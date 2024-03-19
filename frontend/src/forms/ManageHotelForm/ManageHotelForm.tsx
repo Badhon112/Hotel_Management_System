@@ -4,6 +4,8 @@ import TypeSection from "./TypeSection";
 import FacilitiesSection from "./FacilitiesSection";
 import GuestsSection from "./GuestsSection";
 import ImagesSection from "./ImagesSection";
+import { HotelType } from "../../../../backend/src/models/hotel";
+import { useEffect } from "react";
 
 export type HotelFormData = {
   name: string;
@@ -20,13 +22,18 @@ export type HotelFormData = {
 };
 
 type Props = {
+  hotel: HotelType;
   onSave: (HotelFormData: FormData) => void;
   isLoading: boolean;
 };
 
-const ManageHotelForm = ({ onSave, isLoading }: Props) => {
+const ManageHotelForm = ({ onSave, isLoading, hotel }: Props) => {
   const formMethods = useForm<HotelFormData>();
-  const { handleSubmit } = formMethods;
+  const { handleSubmit, reset } = formMethods;
+
+  useEffect(() => {
+    reset(hotel);
+  }, [hotel, reset]);
 
   const onSubmit = handleSubmit((formDataJson: HotelFormData) => {
     //Create new Formdata object & call our api
@@ -65,7 +72,7 @@ const ManageHotelForm = ({ onSave, isLoading }: Props) => {
             type="submit"
             className="bg-blue-600 text-white p-2 font-bold hover:bg-blue-700 px-3 text-xl disabled:bg-gray-500"
           >
-            {isLoading ? "Saving...":"Save"}
+            {isLoading ? "Saving..." : "Save"}
           </button>
         </span>
       </form>
