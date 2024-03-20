@@ -8,7 +8,7 @@ export type UserType = {
   lastName: string;
 };
 
-const userSchema = new mongoose.Schema({
+const userSchema = new mongoose.Schema<UserType>({
   email: {
     type: String,
     require: true,

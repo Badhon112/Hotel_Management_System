@@ -11,6 +11,8 @@ import AddHotels from "./pages/AddHotels";
 import { useAppContext } from "./contexts/AppContext";
 import MyHotels from "./pages/MyHotels";
 import EditHotel from "./pages/EditHotel";
+import Search from "./pages/Search";
+// import SearchBar from "./components/SearchBar";
 
 const App = () => {
   const {isLoggedIn}=useAppContext()
@@ -21,10 +23,7 @@ const App = () => {
           path="/"
           element={
             <Layout>
-              <p>
-                Lorem ipsum dolor sit amet consectetur adipisicing elit. Error,
-                dolore.
-              </p>
+              Lorem ipsum dolor sit amet consectetur adipisicing elit. Aspernatur, obcaecati!
             </Layout>
           }
         />
@@ -32,7 +31,7 @@ const App = () => {
           path="/search"
           element={
             <Layout>
-              <p>Search page</p>
+              <Search/>
             </Layout>
           }
         />
