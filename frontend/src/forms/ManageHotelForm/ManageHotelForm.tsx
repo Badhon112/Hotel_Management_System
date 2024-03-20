@@ -16,13 +16,14 @@ export type HotelFormData = {
   pricePerNight: number;
   starRating: number;
   facilities: string[];
+  imageUrls: string[];
   imageFiles: FileList;
   childCount: number;
   adultCount: number;
 };
 
 type Props = {
-  hotel: HotelType;
+  hotel?: HotelType;
   onSave: (HotelFormData: FormData) => void;
   isLoading: boolean;
 };
@@ -38,6 +39,9 @@ const ManageHotelForm = ({ onSave, isLoading, hotel }: Props) => {
   const onSubmit = handleSubmit((formDataJson: HotelFormData) => {
     //Create new Formdata object & call our api
     const formData = new FormData();
+    if (hotel) {
+      formData.append("hotelId", hotel._id);
+    }
     formData.append("name", formDataJson.name);
     formData.append("city", formDataJson.city);
     formData.append("country", formDataJson.country);
@@ -51,6 +55,13 @@ const ManageHotelForm = ({ onSave, isLoading, hotel }: Props) => {
     formDataJson.facilities.forEach((facility, index) => {
       formData.append(`facilities[${index}]`, facility);
     });
+
+    if(formDataJson.imageUrls){
+      formDataJson.imageUrls.forEach((url,index)=>{
+        formData.append(`imageUrls[${index}]`,url)
+      })
+    }
+
     Array.from(formDataJson.imageFiles).forEach((imageFile) => {
       formData.append(`imageFiles`, imageFile);
     });
@@ -60,7 +71,7 @@ const ManageHotelForm = ({ onSave, isLoading, hotel }: Props) => {
 
   return (
     <FormProvider {...formMethods}>
-      <form className="flex flex-col gap-10" onSubmit={onSubmit}>
+      <form className="flex flex-col gap-10 container" onSubmit={onSubmit}>
         <DetailsSection />
         <TypeSection />
         <FacilitiesSection />

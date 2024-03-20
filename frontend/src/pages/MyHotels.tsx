@@ -15,7 +15,7 @@ const MyHotels = () => {
     return <span>No Hotels found</span>;
   }
   return (
-    <div className="space-y-5">
+    <div className="space-y-5 mx-20">
       <span className="flex justify-between">
         <h1 className="text-3xl font-bold">My Hotels</h1>
         <Link
