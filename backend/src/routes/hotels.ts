@@ -1,4 +1,4 @@
-import express, { Request, Response, Router } from "express";
+import express, { Request, Response} from "express";
 import Hotel from "../models/hotel";
 import { HotelSearchResponse } from "../shared/types";
 
@@ -31,4 +31,4 @@ router.get("/search", async (req: Request, res: Response) => {
   }
 });
 
-export default Router
+export default router

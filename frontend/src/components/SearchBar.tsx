@@ -1,5 +1,5 @@
 import { FormEvent, useState } from "react";
-import { useSearchContex } from "../contexts/SearchContext";
+import { useSearchContext } from "../contexts/SearchContext";
 import { MdTravelExplore } from "react-icons/md";
 import DatePicker from "react-datepicker";
 import "react-datepicker/dist/react-datepicker.css";
@@ -7,7 +7,8 @@ import { useNavigate } from "react-router-dom";
 
 const SearchBar = () => {
   const navigate = useNavigate();
-  const search = useSearchContex();
+  const search = useSearchContext();
+
   const [destination, setDestination] = useState<string>(search.destination);
   const [checkIn, setCheckIn] = useState<Date>(search.checkIn);
   const [checkOut, setCheckOut] = useState<Date>(search.checkOut);
@@ -66,8 +67,8 @@ const SearchBar = () => {
             className="w-full p-1 focus:outline-none font-bold"
             min={0}
             max={20}
-            value={adultCount}
-            onChange={(event) => setAdultCount(parseInt(event.target.value))}
+            value={childCount}
+            onChange={(event) => setChildCount(parseInt(event.target.value))}
           />
         </label>
       </div>

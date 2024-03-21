@@ -39,7 +39,7 @@ export const SearchContextProvider = ({
     checkOut: Date,
     adultCount: number,
     childCount: number,
-    hotelId: string
+    hotelId?: string
   ) => {
     setDestination(destination);
     setCheckIn(checkIn);
@@ -68,7 +68,7 @@ export const SearchContextProvider = ({
   );
 };
 
-export const useSearchContex = () => {
+export const useSearchContext = () => {
   const context = useContext(SearchContext);
   return context as SearchContext;
 };
