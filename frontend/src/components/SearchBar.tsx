@@ -14,8 +14,8 @@ const SearchBar = () => {
   const [checkOut, setCheckOut] = useState<Date>(search.checkOut);
   const [adultCount, setAdultCount] = useState<number>(search.adultCount);
   const [childCount, setChildCount] = useState<number>(search.childCount);
-  const [hotelId, sethotelId] = useState<string>(search.hotelId);
-
+  // const [hotelId, sethotelId] = useState<string>(search.hotelId);
+  const hotelId:string=search.hotelId
   const handleSubmit = (event: FormEvent) => {
     event.preventDefault();
     search.saveSearchValues(

@@ -21,7 +21,6 @@ const Search = () => {
   const { data: hotelData } = useQuery(["searchHotels", searchParams], () =>
     apiClient.searchHotels(searchParams)
   );
-  console.log(hotelData);
 
   return (
     <div className="grid grid-cols-1 lg:grid-cols-[250px_1fr] gap-5 container">
